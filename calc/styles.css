@@ -1104,102 +1104,129 @@ body {
 
 /*              Edit Ciphers Menu             */
 /* ########################################## */
+/*              Edit Ciphers Menu             */
+/* ########################################## */
+
+/* Existing styles... */
+
+.ciphCatButton {
+    white-space: normal; /* Allow line breaks */
+    overflow: visible; /* Allow content to overflow if necessary */
+    text-overflow: clip; /* No ellipsis, as we're allowing for line breaks */
+    width: 100%; /* Adjust as per your layout needs */
+    padding: 3px; /* Add some padding to make sure text doesn't touch the border */
+    font-size: 12px; /* Added to reduce font size */
+}
+  
+@media (max-width: 911px) {
+    .ciphCatButton {
+      font-size: 14px;
+    }
+}
+
+.dropdown-content {
+    width: auto;
+}
+
+/* Rest of your CSS */
 
 .editCiphersContainer {
-	position: relative;
-	margin: 0.5em 0em 0.5em 0em;
-	padding: 1em;
-	background: var(--menu-bg-accent);
-	width: -webkit-fit-content;
-	width: -moz-fit-content;
-	border: 1px solid var(--border-dark-accent);
+    position: relative;
+    margin: 0.5em 0em 0.5em 0em;
+    padding: 1em;
+    background: var(--menu-bg-accent);
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    border: 1px solid var(--border-dark-accent);
 }
 .custCipherMainTable {
-	margin: 0.5em 0em 0.5em 0em;
-	/*width: 570px;*/
+    margin: 0.5em 0em 0.5em 0em;
+    /*width: 570px;*/
 }
 .custCipherTable {
-	/*margin: 0em 0em 0.75em 0em;*/
+    /*margin: 0em 0em 0.75em 0em;*/
 }
 #custCipherNameInput, #custCipherCatInput {
-	background: var(--btn-bg-accent);
-	font-size: 125%;
-	color: var(--font-white-2);
-	font-family: var(--font-family), "Arial", sans-serif;
-	font-weight: 500;
-	text-align: center;
-	width: 100%;
-	box-sizing: border-box;
-	border: 1px solid var(--border-dark-accent);
+    background: var(--btn-bg-accent);
+    font-size: 125%;
+    color: var(--font-white-2);
+    font-family: var(--font-family), "Arial", sans-serif;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-dark-accent);
 }
 #custCipherAlphabet, #custCipherGlobVals {
-	background: var(--btn-bg-accent);
-	font-size: 125%;
-	color: var(--font-white-2);
-	font-family: var(--font-family), "Arial", sans-serif;
-	font-weight: 500;
-	width: 500px;
-	text-align: center;
-	resize: none;
-	width: 100%;
-	box-sizing: border-box;
-	border: 1px solid var(--border-dark-accent);
+    background: var(--btn-bg-accent);
+    font-size: 125%;
+    color: var(--font-white-2);
+    font-family: var(--font-family), "Arial", sans-serif;
+    font-weight: 500;
+    width: 500px;
+    text-align: center;
+    resize: none;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-dark-accent);
 }
 #custCipherGlobVals {
-	font-size: 100%;
-	height: 40px;
+    font-size: 100%;
+    height: 40px;
 }
 #custCipherAlphabet:focus, #custCipherGlobVals:focus,
 #custCipherNameInput:focus, #custCipherCatInput:focus {
-	outline: none;
-	border: 1px solid var(--border-dark-accent);
+    outline: none;
+    border: 1px solid var(--border-dark-accent);
 }
 .custCharInd:focus, .custCharIndValue:focus {
-	outline: none;
-	border: none;
+    outline: none;
+    border: none;
 }
 #diacrChkbox, #caseSensChkbox {
-	display: inline-flex;
-	padding: 0em 1em 0.75em 1em;
+    display: inline-flex;
+    padding: 0em 1em 0.75em 1em;
 }
 .custCharIndTable {
-	width: 40px;
-	border-spacing: 0px;
-	border: none;
+    width: 40px;
+    border-spacing: 0px;
+    border: none;
 }
 .custCharIndLabel {
-	text-align: center;
-	background: var(--btn-bg-accent);
-	height: 38px;
-	box-sizing: border-box;
-	border: 1px solid var(--border-dark-accent);
+    text-align: center;
+    background: var(--btn-bg-accent);
+    height: 38px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-dark-accent);
 }
 .custCharInd {
-	width: 40px;
-	text-align: center;
-	font-weight: 500;
-	font-size: 150%;
-	font-family: var(--font-family), "Arial", sans-serif;
-	border: none;
-	background: transparent;
-	color: var(--font-white-2);
+    width: 40px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 150%;
+    font-family: var(--font-family), "Arial", sans-serif;
+    border: none;
+    background: transparent;
+    color: var(--font-white-2);
 }
 .custCharIndValue {
-	width: 40px;
-	text-align: center;
-	font-weight: 500;
-	font-size: 100%;
-	padding: 0.2em 0.2em 0.2em 0.2em;
-	font-family: var(--font-family), "Arial", sans-serif;
-	border: none;
-	background: transparent;
-	color: var(--font-white-2);
+    width: 40px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 100%;
+    padding: 0.2em 0.2em 0.2em 0.2em;
+    font-family: var(--font-family), "Arial", sans-serif;
+    border: none;
+    background: transparent;
+    color: var(--font-white-2);
 }
 @media (max-width: 911px) { /* mobile */
-	.custCharInd, .custCharIndValue {
-		width: 30px !important;
-	}
+    .custCharInd, .custCharIndValue {
+        width: 30px !important;
+    }
 }
+
+/* Note: Remove any previous tooltip styles if they're no longer needed */
 
 /*               Date Calculator              */
 /* ########################################## */

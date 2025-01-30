@@ -220,6 +220,7 @@ function generateRndColors() { rndCol.H = fillColArr(0, 359, 360/12); rndCol.S =
 function fillColArr(min, max, step) { var i; var a = []; for (i = min; i <= max; i += step) a.push(i); return a } // inclusive
 function getRndIndex(a) { return a[rndInt(0, a.length-1)] }
 
+
 // ========================== Cyphers Menu ==========================
 
 function createCiphersMenu() { // create menu with all cipher categories
@@ -241,9 +242,10 @@ function createCiphersMenu() { // create menu with all cipher categories
     o += '<div style="width: 30%; float: left;">'
     for (i = 0; i < cCat.length; i++) {
         let category = cCat[i];
-        // Apply 'gematriaClub' class only to the 'Gematria Club' category
-        let extraClass = category === "Gematria Club" ? " gematriaClub" : "";
-        o += '<input class="intBtn2 ciphCatButton' + extraClass + '" type="button" value="' + category + '">';
+        // Replace spaces with line breaks if the name is too long
+        let displayCategory = category.length > 15 ? category.replace(/\s+/g, '<br>') : category;
+        let extraClass = category === "The CCRU" ? " gematriaClub" : "";
+        o += '<input class="intBtn2 ciphCatButton' + extraClass + '" type="button" value="' + displayCategory + '">';
     }
     o += '</div>'
 
@@ -257,17 +259,18 @@ function createCiphersMenu() { // create menu with all cipher categories
     displayCipherCatDetailed(cCat[0]) // open first available category
 }
 
-
 $(document).ready(function(){
-	$("body").on("mouseover", ".ciphCatButton", function () { // mouse over cipher category button
-		displayCipherCatDetailed( $(this).val() );
-	});
+    $("body").on("mouseover", ".ciphCatButton", function () { // mouse over cipher category button
+        // Since we're using HTML in the value for line breaks, we need to get the text content differently
+        displayCipherCatDetailed( $(this).attr('value') );
+    });
 
-	$("body").on("click", ".ciphCatButton", function (e) {
-		if (navigator.maxTouchPoints < 1) { // Left Click (desktop)
-			toggleCipherCategory( $(this).val() ) // toggle category
-		}
-	});
+    $("body").on("click", ".ciphCatButton", function (e) {
+        if (navigator.maxTouchPoints < 1) { // Left Click (desktop)
+            // Same here, we need to get the value attribute instead of using .val()
+            toggleCipherCategory( $(this).attr('value') ); // toggle category
+        }
+    });
 });
 
 function displayCipherCatDetailed(curCat) {
@@ -310,15 +313,13 @@ function createAboutMenu() { // create menu with all cipher catergories
 	o += '<div style="margin: 0.5em;"></div>'
 	o += '<input class="intBtn" type="button" value="Cyphers Webmaster Net Void" onclick="gotoNetVoid()">'
 	o += '<div style="margin: 0.5em;"></div>'
-	o += '<input class="intBtn" type="button" value="Gematria Club" onclick="gotoGematriaClub()">'
-	o += '<div style="margin: 0.5em;"></div>'
 	o += '<input class="intBtn" type="button" value="Gematria Research" onclick="gotoAlektryonBlog()">'
 	o += '<div style="margin: 0.5em;"></div>'
-	o += '<input class="intBtn" type="button" value="Cyphers Youtube" onclick="gotoCyphersYoutube()">'
-	o += '<div style="margin: 0.5em;"></div>'
-	o += '<input class="intBtn" type="button" value="Cyphers Discord" onclick="gotoDiscordServer()">'
-	o += '<div style="margin: 0.5em;"></div>'
 	o += '<input class="intBtn" type="button" value="Cyphers Twitter / X" onclick="gotoX()">'
+	o += '<div style="margin: 0.5em;"></div>'
+		o += '<input class="intBtn" type="button" value="Cyphers Discord" onclick="gotoDiscordServer()">'
+	o += '<div style="margin: 0.5em;"></div>'
+	o += '<input class="intBtn" type="button" value="Cyphers Youtube" onclick="gotoCyphersYoutube()">'
 	o += '<div style="margin: 0.5em;"></div>'
 	o += '<input class="intBtn" type="button" value="Cyphers Database" onclick="gotoDatabase()">'
 	o += '<div style="margin: 0.5em;"></div>'
@@ -344,15 +345,13 @@ function gotoGitHubRepo() { window.open("https://github.com/malonehunter/hyperdo
 
 function gotoNetVoid () {window.open("https://www.youtube.com/@NetVoid/featured", "_blank") }
 
-function gotoGematriaClub () {window.open("https://www.gematriaclub.com", "_blank") }
-
 function gotoAlektryonBlog () {window.open("https://gematriaresearch.blogspot.com/", "_blank") }
 
-function gotoCyphersYoutube() { window.open("https://www.youtube.com/channel/UCg2_MXc1Q8AajN_n9kqIltQ", "_blank") }
+function gotoX() { window.open("https://twitter.com/CyphersNews", "_blank") }
 
 function gotoDiscordServer() { window.open("https://discord.gg/SJjN64x3h7", "_blank") }
 
-function gotoX() { window.open("https://twitter.com/CyphersNews", "_blank") }
+function gotoCyphersYoutube() { window.open("https://www.youtube.com/channel/UCg2_MXc1Q8AajN_n9kqIltQ", "_blank") }
 
 function gotoDatabase () {window.open("https://www.netvoid.tv/gematria", "_blank") }
 
